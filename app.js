@@ -6,6 +6,10 @@ const database = mongoose.connection;
 require("dotenv").config();
 const mongoString = process.env.MONGODB_URI;
 
+const privateRoutes = require("./routes/private.routes");
+const publicRoutes = require("./routes/public.routes");
+const resultsRoute = require("./routes/results.route");
+
 app.use(express.json());
 app.use(cors());
 
@@ -32,3 +36,6 @@ database.once("connected", () => {
 app.get("/", (req, res) => {
   res.json({ message: "Your server is live!" });
 });
+app.use("/private-user", privateRoutes);
+app.use("/public-user", publicRoutes);
+app.use("/results", resultsRoute);

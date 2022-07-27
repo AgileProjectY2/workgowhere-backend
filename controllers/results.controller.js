@@ -1,11 +1,14 @@
-const router = require("express").Router();
-
 // Fetch results based on estate
-router.route("/some-name").get((req, res) => {
+const results_estate = (req, res) => {
   //
-});
+};
 
 // Fetch results based on keywords/filters
-router.route("/some-name").get((req, res) => {
+const results_keywords = (req, res) => {
   //
-});
+};
+
+module.exports = {
+  results_estate,
+  results_keywords,
+};

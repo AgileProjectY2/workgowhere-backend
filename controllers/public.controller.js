@@ -1,13 +1,14 @@
-const router = require("express").Router();
-
 // Register a new user
-router.route("/some-name").post((req, res) => {
-  // Encrypt user password before saving into DB
-});
+const account_register = (req, res) => {
+  //
+};
 
 // Login a user
-router.route("/some-name").post((req, res) => {
+const account_login = (req, res) => {
   //
-});
+};
 
-mpdule.exports = router;
+module.exports = {
+  account_register,
+  account_login,
+};

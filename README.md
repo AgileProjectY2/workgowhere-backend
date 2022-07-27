@@ -9,4 +9,5 @@
 5. In the root foler, create a new file called `.env`.
 6. Copy and paste the database URI in the file and save. Without this file, the database will not be able to connect. This environment file is needed so that we do not upload sensitive credentials onto the github repo.
 7. To start the server, run `nodemon app`. You should see a message from the console that the server is running and database is connected.
-8. The server will automatically restart for you upon every save with the `nodemon` library.
+8. Head to your browser, open `http://localhost:5000/` and you should see your server's response message.
+9. The server will automatically restart for you upon every save with the `nodemon` library.

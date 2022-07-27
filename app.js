@@ -27,3 +27,8 @@ database.on("error", err => {
 database.once("connected", () => {
   console.log("Database connected!");
 });
+
+// Connect all the routes
+app.get("/", (req, res) => {
+  res.json({ message: "Your server is live!" });
+});

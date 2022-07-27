@@ -6,7 +6,7 @@ router.route("/some-name").get((req, res) => {
 });
 
 // Create a new listing by a user id
-router.route("/some-name").ppst((req, res) => {
+router.route("/some-name").post((req, res) => {
   //
 });
 

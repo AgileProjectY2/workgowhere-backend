@@ -9,7 +9,7 @@ const mongoString = process.env.MONGODB_URI;
 app.use(express.json());
 app.use(cors());
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("Server is running...");
 });
 

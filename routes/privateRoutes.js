@@ -1,5 +1,5 @@
 const express = require("express");
-const privateController = require("../controllers/private.controller");
+const privateController = require("../controllers/privateController");
 const router = express.Router();
 
 router.get("/dashboard/:id", privateController.user_dashboard);

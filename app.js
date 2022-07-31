@@ -6,9 +6,9 @@ const database = mongoose.connection;
 require("dotenv").config();
 const mongoString = process.env.MONGODB_URI;
 
-const privateRoutes = require("./routes/private.routes");
-const publicRoutes = require("./routes/public.routes");
-const resultsRoute = require("./routes/results.route");
+const privateRoutes = require("./routes/privateRoutes");
+const publicRoutes = require("./routes/publicRoutes");
+const resultsRoute = require("./routes/resultsRoute");
 
 app.use(express.json());
 app.use(cors());

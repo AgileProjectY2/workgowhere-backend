@@ -1,5 +1,5 @@
 const express = require("express");
-const publicController = require("../controllers/public.controller");
+const publicController = require("../controllers/publicController");
 const router = express.Router();
 
 router.post("/register", publicController.account_register);

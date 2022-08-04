@@ -11,7 +11,7 @@ const account_register = async (req, res) => {
     let hash = await bcrypt.hash(inputPassword, 10);
     let newUser = new User({ ...req.body, password: hash });
     // Save data in database
-    newUser = await newUser.save();
+    await newUser.save();
 
     if (res.status(200)) {
       res.send({ message: "Account created successfully", newUser });

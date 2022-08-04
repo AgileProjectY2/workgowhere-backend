@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Listing = require("../models/listingModel");
 
 // Fetch all listing(s) by a user id
 const user_dashboard = async (req, res) => {
@@ -6,7 +7,7 @@ const user_dashboard = async (req, res) => {
 
   try {
     let user = await User.findById({ _id: id });
-    user = await user.populate("listingsPosted");
+    await user.populate("listingsPosted");
 
     if (res.status(200)) {
       res.send({ message: "Data fetch successfully", user });
@@ -24,8 +25,26 @@ const user_new_listing = (req, res) => {
 };
 
 // Delete a listing by is and user id
-const user_delete_listing = (req, res) => {
-  //
+const user_delete_listing = async (req, res) => {
+  const userId = req.params.id;
+  const listingId = req.params.listing_id;
+
+  try {
+    // Delete listing from Listing schema
+    await Listing.findByIdAndRemove(listingId);
+    // Delete listing from User.listingsPosted schema
+    const updateUser = await User.findById({ _id: userId });
+    updateUser.listingsPosted.pop(listingId);
+    await updateUser.save();
+
+    if (res.status(200)) {
+      res.send({ message: "Listing deleted successfully", updateUser });
+    }
+  } catch (err) {
+    res.send({
+      message: "Error deleting in Listing",
+    });
+  }
 };
 
 module.exports = {

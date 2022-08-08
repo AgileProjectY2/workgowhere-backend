@@ -7,60 +7,62 @@ const listingSchema = new Schema({
   name: {
     type: String,
     unique: false,
-    required: true,
+    required: true
   },
   description: {
     type: String,
     unique: false,
-    required: true,
+    required: true
   },
   address: {
     streetOne: { type: String, required: true },
     streetTwo: { type: String, required: false },
     unitNum: { type: String, required: false },
-    postalCode: { type: String, required: true },
+    country: { type: String, required: true },
+    postalCode: { type: String, required: true }
   },
   operatingHours: {
     start: { type: String, required: true },
     end: { type: String, required: true },
-    daysClosed: [{ type: String, required: true }],
+    daysClosed: [{ type: String, required: true }]
   },
   contactNum: {
     type: String,
-    required: true,
+    required: true
   },
   estate: {
     type: String,
     enum: ESTATES_SG,
-    required: true,
+    required: true
   },
   website: {
     type: String,
-    required: true,
+    required: true
   },
   reservationUrl: {
     type: String,
-    required: false,
+    required: false
   },
   keywords: [
     {
-      type: String,
+      type: Object,
+      required: false
     },
   ],
   images: {
-    type: String,
-    required: true,
+    data:Buffer,
+    contentType: String
   },
   listingOwner: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    required: true
   },
   createdAt: {
     type: String,
     default: formateDate,
     immutable: true,
-    required: true,
+    required: true
   },
 });
 

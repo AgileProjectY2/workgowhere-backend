@@ -30,7 +30,7 @@ database.on("error", err => {
 // .once will only run one time
 database.once("connected", () => {
   console.log("Database connected!");
-});
+});  
 
 // Connect all the routes
 app.get("/", (req, res) => {

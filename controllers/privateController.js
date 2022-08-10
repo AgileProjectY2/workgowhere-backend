@@ -21,7 +21,49 @@ const user_dashboard = async (req, res) => {
 
 // Create a new listing by a user id
 const user_new_listing = (req, res) => {
-  //
+  const name = req.body.name;
+  const description = req.body.description;
+  const streetOne = req.body.address.streetOne;
+  const streetTwo = req.body.address.streetOne;
+  const unitNum = req.body.address.streetTwo;
+  const country = req.body.address.country;
+  const postalCode = req.body.address.postalCode;
+  const start = req.body.operatingHours.start;
+  const end = req.body.operatingHours.end;
+  const daysClosed = req.body.operatingHours.daysClosed;
+  const contactNum = req.body.contactNum;
+  const estate = req.body.estate;
+  const website = req.body.website;
+  const reservationUrl = req.body.reservationUrl;
+  const keywords = req.body.keywords;
+  const images = req.body.images;
+
+  const newListing = new Listing({
+    name,
+    description,
+    address: {
+      streetOne,
+      streetTwo,
+      unitNum,
+      country,
+      postalCode
+    },
+    operatingHours: {
+      start,
+      end,
+      daysClosed
+    },
+    contactNum,
+    estate,
+    website,
+    reservationUrl,
+    keywords,
+    images
+  });
+
+  newListing.save()
+  .then(() => res.json("Listing added"))
+  .catch(err => res.status(200).json("Error: " + err));
 };
 
 // Delete a listing by is and user id

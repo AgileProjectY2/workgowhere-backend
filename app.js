@@ -5,6 +5,7 @@ const app = express();
 const database = mongoose.connection;
 require("dotenv").config();
 const mongoString = process.env.MONGODB_URI;
+const auth = require("./utils/auth");
 
 const privateRoutes = require("./routes/privateRoutes");
 const publicRoutes = require("./routes/publicRoutes");
@@ -30,12 +31,12 @@ database.on("error", err => {
 // .once will only run one time
 database.once("connected", () => {
   console.log("Database connected!");
-});  
+});
 
 // Connect all the routes
 app.get("/", (req, res) => {
   res.json({ message: "Your server is live!" });
 });
-app.use("/private-user", privateRoutes);
+app.use("/private-user", auth, privateRoutes);
 app.use("/public-user", publicRoutes);
 app.use("/results", resultsRoute);

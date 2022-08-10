@@ -28,15 +28,6 @@ const user_new_listing = (req, res) => {
     listingOwner: id
   })
 
-  // try {
-
-  // } catch (err) {
-  //   res.status(400).send({
-  //     message: "Error", err
-  //   })
-  // }
-
-
   newListing.save(
     User.findById(id, (err, user) => {
       if (err) return res.send(err)

@@ -50,8 +50,8 @@ const listingSchema = new Schema({
     },
   ],
   images: {
-    data:Buffer,
-    contentType: String
+    type: Object,
+    required: false
   },
   listingOwner: {
     type: Schema.Types.ObjectId,

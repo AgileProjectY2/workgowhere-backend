@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const Listing = require("../models/listingModel");
+const multer = require("multer")
 
 // Fetch all listing(s) by a user id
 const user_dashboard = async (req, res) => {
@@ -47,6 +48,18 @@ const user_new_listing = (req, res) => {
     })
   )
 };
+
+// Storage for images
+// const Storage = multer.diskStorage({
+//   destination:"assets",
+//   filename:(req,file,cb)=> {
+//     cb(null, file.originalname);
+//   }
+// });
+
+// const upload = multer({
+//   storage:Storage
+// }).single("testImg")
 
 // Delete a listing by is and user id
 const user_delete_listing = async (req, res) => {

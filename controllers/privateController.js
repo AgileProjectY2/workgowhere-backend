@@ -21,12 +21,12 @@ const user_dashboard = async (req, res) => {
 
 // Create a new listing by a user id
 const user_new_listing = (req, res) => {
-  const id = req.params.id
+  const id = req.params.id;
 
   const newListing = new Listing({
     ...req.body,
     listingOwner: id
-  })
+  });
 
   newListing.save(
     User.findById(id, (err, user) => {

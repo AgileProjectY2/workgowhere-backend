@@ -26,7 +26,7 @@ const user_new_listing = (req, res) => {
   const newListing = new Listing({
     ...req.body,
     listingOwner: id
-  })
+  });
 
   newListing.save(
     User.findById(id, (err, user) => {

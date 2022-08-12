@@ -10,7 +10,6 @@ const auth = require("./utils/auth");
 const privateRoutes = require("./routes/privateRoutes");
 const publicRoutes = require("./routes/publicRoutes");
 const resultsRoute = require("./routes/resultsRoute");
-const uploadImagesRoute = require("./routes/uploadImagesRoute");
 
 app.use(express.json());
 app.use(cors());
@@ -41,4 +40,3 @@ app.get("/", (req, res) => {
 app.use("/private-user", auth, privateRoutes);
 app.use("/public-user", publicRoutes);
 app.use("/results", resultsRoute);
-app.use("/upload", uploadImagesRoute);

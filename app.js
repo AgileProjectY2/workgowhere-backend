@@ -11,7 +11,11 @@ const privateRoutes = require("./routes/privateRoutes");
 const publicRoutes = require("./routes/publicRoutes");
 const resultsRoute = require("./routes/resultsRoute");
 
-const whitelist = ["http://localhost:3000", "http://localhost:3001"];
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://workgowhere.herokuapp.com/",
+];
 
 const corsOptions = {
   origin: function (origin, callback) {

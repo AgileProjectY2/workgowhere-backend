@@ -11,11 +11,8 @@ const privateRoutes = require("./routes/privateRoutes");
 const publicRoutes = require("./routes/publicRoutes");
 const resultsRoute = require("./routes/resultsRoute");
 
-const whitelist = [
-  "http://localhost:3000",
-  "http://localhost:3001",
-  "https://mongo-backend-test.herokuapp.com/",
-];
+const whitelist = ["http://localhost:3000", "http://localhost:3001"];
+
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {

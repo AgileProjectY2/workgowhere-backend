@@ -11,12 +11,30 @@ const privateRoutes = require("./routes/privateRoutes");
 const publicRoutes = require("./routes/publicRoutes");
 const resultsRoute = require("./routes/resultsRoute");
 
-app.use(express.json());
-app.use(cors());
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://workgowhere.herokuapp.com/",
+];
 
-app.listen(process.env.PORT || 3001, () => {
-  console.log("Server is running...");
-});
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new error("Not allowed by CORS"));
+    }
+  },
+  preflightContinue: false,
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.use(express.json());
+
+// app.listen(process.env.PORT || 3001, () => {
+//   console.log("Server is running...");
+// });
 
 // Connection to mongoDB
 mongoose.connect(mongoString, {
@@ -40,3 +58,5 @@ app.get("/", (req, res) => {
 app.use("/private-user", auth, privateRoutes);
 app.use("/public-user", publicRoutes);
 app.use("/results", resultsRoute);
+
+module.exports = app;

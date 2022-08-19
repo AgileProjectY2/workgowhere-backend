@@ -25,30 +25,33 @@ const user_new_listing = (req, res) => {
 
   const newListing = new Listing({
     ...req.body,
-    listingOwner: id
+    listingOwner: id,
   });
 
   newListing.save(
     User.findById(id, (err, user) => {
-      if (err) return res.send(err)
+      if (err) return res.send(err);
 
-      user.listingsPosted.push(newListing._id)
-      user.save()
-      .then(result => {
-        res.status(200).send({
-          message: "listingsPosted updated successfully", result
+      user.listingsPosted.push(newListing._id);
+      user
+        .save()
+        .then(result => {
+          res.status(200).send({
+            message: "listingsPosted updated successfully",
+            result,
+          });
         })
-      })
-      .catch(err => {
-        res.status(400).send({
-          message: "Error", err
-        })
-      })
+        .catch(err => {
+          res.status(400).send({
+            message: "Error",
+            err,
+          });
+        });
     })
-  )
+  );
 };
 
-// Delete a listing by is and user id
+// Delete a listing by id and user id
 const user_delete_listing = async (req, res) => {
   const userId = req.params.id;
   const listingId = req.params.listing_id;

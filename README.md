@@ -1,5 +1,9 @@
 # WorkGoWhere Backend
 
+## Backend is now live
+
+📍 https://workgowhere.herokuapp.com/
+
 ## 🏃🏻‍♀️ How to get this up and running?
 
 1. Locate where you want to save this repo in your local machine from your terminal.
